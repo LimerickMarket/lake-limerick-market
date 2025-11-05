@@ -1,0 +1,2 @@
+# This directory is used by cssbundling-rails to output compiled CSS
+# The compiled application.css file will be generated here by npm run build:css
