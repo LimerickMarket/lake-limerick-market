@@ -1,0 +1,14 @@
+New Contact Form Submission
+===========================
+
+Name: <%= @contact.name %>
+Email: <%= @contact.email %>
+<% if @contact.phone.present? %>Phone: <%= @contact.phone %><% end %>
+
+Message:
+--------
+<%= @contact.message %>
+
+---
+Submitted at: <%= @contact.created_at.strftime("%B %d, %Y at %I:%M %p") %>
+Reply to this email to respond to <%= @contact.name %>.

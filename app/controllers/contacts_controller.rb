@@ -7,8 +7,8 @@ class ContactsController < ApplicationController
     @contact = Contact.new(contact_params)
     
     if @contact.save
-      # Send notification email to admin (optional)
-      # ContactMailer.new_contact(@contact).deliver_later
+      # Send notification email to admin
+      ContactMailer.new_contact(@contact).deliver_later
       
       redirect_to root_path, notice: "Thank you for contacting us! We'll get back to you soon."
     else
