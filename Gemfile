@@ -71,8 +71,6 @@ gem "bootstrap5-kaminari-views", "~> 0.0.1"
 
 gem "bootstrap", "~> 5.3"
 
-gem "sassc-rails", "~> 2.1"
-
 # Security
 gem "rack-attack", "~> 6.7"
 
