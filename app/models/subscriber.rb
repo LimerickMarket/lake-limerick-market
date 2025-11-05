@@ -1,4 +1,6 @@
 class Subscriber < ApplicationRecord
+  before_create :set_subscribed_at
+
   validates :email, presence: true, uniqueness: true, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :first_name, presence: true
   validates :last_name, presence: true
@@ -8,5 +10,11 @@ class Subscriber < ApplicationRecord
 
   def full_name
     "#{first_name} #{last_name}"
+  end
+
+  private
+
+  def set_subscribed_at
+    self.subscribed_at ||= Time.current
   end
 end

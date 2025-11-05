@@ -58,7 +58,7 @@ class Admin::NewsletterTemplatesController < ApplicationController
     if subscribers.any?
       # Send emails to all subscribers
       subscribers.each do |subscriber|
-        NewsletterMailer.send_newsletter(@template, subscriber).deliver_later
+        NewsletterMailer.send_newsletter(subscriber, @template).deliver_later
       end
       
       @template.update(last_sent_at: Time.current)
