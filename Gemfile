@@ -78,3 +78,6 @@ gem "rack-attack", "~> 6.7"
 
 # Email (SendGrid)
 gem "sendgrid-ruby"
+
+# Image Storage (Cloudinary)
+gem "cloudinary"
