@@ -9,10 +9,10 @@
 
   <div class="row">
     <div class="col-lg-6 mb-4">
-      <% if @menu_item.image_url.present? %>
-        <%= image_tag @menu_item.image_url, alt: @menu_item.name, class: "img-fluid rounded shadow" %>
-      <% elsif @menu_item.image.attached? %>
+      <% if @menu_item.image.attached? %>
         <%= image_tag @menu_item.image, alt: @menu_item.name, class: "img-fluid rounded shadow" %>
+      <% elsif @menu_item.image_url.present? %>
+        <%= image_tag @menu_item.image_url, alt: @menu_item.name, class: "img-fluid rounded shadow" %>
       <% else %>
         <div class="bg-light rounded shadow d-flex align-items-center justify-content-center" style="height: 400px;">
           <span class="text-muted fs-1">🥬</span>
