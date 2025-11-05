@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: limerick-market
+    env: ruby
+    buildCommand: "./bin/bundle install; ./bin/rails assets:precompile; ./bin/rails db:migrate"
+    startCommand: "./bin/rails server -b 0.0.0.0"
+    healthCheckPath: /up
+    envVars:
+      - key: RAILS_ENV
+        value: production
+      - key: RACK_ENV
+        value: production
+      - key: DATABASE_URL
+        fromDatabase:
+          name: limerick-market-db
+          property: connectionString
+      - key: RAILS_MASTER_KEY
+        sync: false
+      - key: SECRET_KEY_BASE
+        generateValue: true
+      - key: SENDGRID_API_KEY
+        sync: false
+      - key: APP_HOST
+        value: limerick-market.onrender.com
+
+databases:
+  - name: limerick-market-db
+    databaseName: limerick_market_production
+    user: limerick_market

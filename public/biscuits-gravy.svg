@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <rect width="400" height="300" fill="#F5DEB3"/>
+  <circle cx="170" cy="150" r="50" fill="#F5DEB3" stroke="#D2691E" stroke-width="3"/>
+  <circle cx="230" cy="150" r="50" fill="#F5DEB3" stroke="#D2691E" stroke-width="3"/>
+  <path d="M 120 140 Q 200 100 280 140 L 280 160 Q 200 200 120 160 Z" fill="#A0826D" opacity="0.7"/>
+  <text x="200" y="250" font-family="Georgia, serif" font-size="20" fill="#8B4513" text-anchor="middle" font-weight="bold">Biscuits & Gravy</text>
+</svg>

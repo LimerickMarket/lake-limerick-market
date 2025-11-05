@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <rect width="400" height="300" fill="#FFFEF7"/>
+  <ellipse cx="200" cy="80" rx="80" ry="25" fill="#D2691E"/>
+  <rect x="120" y="95" width="160" height="15" fill="#228B22"/>
+  <rect x="120" y="110" width="160" height="15" fill="#FF6347"/>
+  <rect x="120" y="125" width="160" height="15" fill="#FFD700"/>
+  <rect x="120" y="140" width="160" height="30" fill="#8B4513"/>
+  <ellipse cx="200" cy="170" rx="80" ry="25" fill="#DAA520"/>
+  <circle cx="160" cy="70" r="4" fill="#F5DEB3"/>
+  <circle cx="185" cy="75" r="4" fill="#F5DEB3"/>
+  <circle cx="220" cy="72" r="4" fill="#F5DEB3"/>
+  <text x="200" y="250" font-family="Georgia, serif" font-size="20" fill="#8B4513" text-anchor="middle" font-weight="bold">Burger</text>
+</svg>

@@ -1,0 +1,70 @@
+<div class="container mt-4">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="market-section">
+        <h2 class="text-center">📧 Subscribe to Our Newsletter</h2>
+        <p class="text-center text-muted">Stay updated with fresh arrivals, special events, and exclusive deals!</p>
+        
+        <div class="card">
+          <div class="card-body">
+            <%= form_with model: @subscriber, url: subscriptions_path, local: true, class: "row g-3" do |form| %>
+              <% if @subscriber.errors.any? %>
+                <div class="col-12">
+                  <div class="alert alert-danger">
+                    <h6>Please fix the following errors:</h6>
+                    <ul class="mb-0">
+                      <% @subscriber.errors.full_messages.each do |message| %>
+                        <li><%= message %></li>
+                      <% end %>
+                    </ul>
+                  </div>
+                </div>
+              <% end %>
+              
+              <div class="col-md-6">
+                <%= form.label :first_name, class: "form-label" %>
+                <%= form.text_field :first_name, class: "form-control", placeholder: "Your first name" %>
+              </div>
+              
+              <div class="col-md-6">
+                <%= form.label :last_name, class: "form-label" %>
+                <%= form.text_field :last_name, class: "form-control", placeholder: "Your last name" %>
+              </div>
+              
+              <div class="col-12">
+                <%= form.label :email, class: "form-label" %>
+                <%= form.email_field :email, class: "form-control", placeholder: "your.email@example.com", required: true %>
+              </div>
+              
+              <div class="col-12">
+                <div class="form-check">
+                  <%= form.check_box :weekly_deals, class: "form-check-input", checked: true %>
+                  <%= form.label :weekly_deals, "Send me weekly deals and promotions", class: "form-check-label" %>
+                </div>
+              </div>
+              
+              <div class="col-12">
+                <div class="form-check">
+                  <%= form.check_box :event_notifications, class: "form-check-input", checked: true %>
+                  <%= form.label :event_notifications, "Notify me about upcoming events", class: "form-check-label" %>
+                </div>
+              </div>
+              
+              <div class="col-12 text-center">
+                <%= form.submit "Subscribe Now", class: "btn btn-success btn-lg" %>
+                <%= link_to "Maybe Later", root_path, class: "btn btn-outline-secondary ms-2" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        
+        <div class="text-center mt-4">
+          <small class="text-muted">
+            We respect your privacy. You can unsubscribe at any time. 
+            By subscribing, you agree to receive marketing emails from 3rd Generation Limerick Market.
+          </small>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

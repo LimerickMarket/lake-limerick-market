@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <rect width="400" height="300" fill="#FFFEF7"/>
+  <ellipse cx="200" cy="180" rx="90" ry="15" fill="#D2691E"/>
+  <ellipse cx="200" cy="160" rx="90" ry="15" fill="#DAA520"/>
+  <ellipse cx="200" cy="140" rx="90" ry="15" fill="#F4A460"/>
+  <rect x="195" y="70" width="10" height="70" fill="#FFD700"/>
+  <circle cx="200" cy="65" r="8" fill="#FFD700"/>
+  <text x="200" y="250" font-family="Georgia, serif" font-size="20" fill="#8B4513" text-anchor="middle" font-weight="bold">Pancakes</text>
+</svg>

@@ -1,0 +1,167 @@
+<div class="container mt-4">
+  <div class="row">
+    <!-- Main Event Content -->
+    <div class="col-lg-8">
+      <!-- Back Button -->
+      <div class="mb-3">
+        <%= link_to "← Back to Events", events_path, class: "btn btn-outline-secondary" %>
+      </div>
+      
+      <!-- Event Header -->
+      <div class="card border-0 shadow-lg mb-4">
+        <% if @event.image.attached? %>
+          <%= image_tag @event.image, class: "card-img-top", style: "height: 400px; object-fit: cover; border-radius: 12px 12px 0 0;" %>
+        <% else %>
+          <div class="card-img-top d-flex align-items-center justify-content-center" style="height: 400px; background: linear-gradient(135deg, var(--market-warm), var(--market-light)); border-radius: 12px 12px 0 0;">
+            <span style="font-size: 8rem; opacity: 0.5;">🎪</span>
+          </div>
+        <% end %>
+        
+        <div class="card-body p-4">
+          <h1 class="display-4 mb-3" style="color: var(--market-primary); font-weight: bold;">
+            <%= @event.title %>
+          </h1>
+          
+          <!-- Event Meta Information -->
+          <div class="row g-3 mb-4">
+            <div class="col-md-6">
+              <div class="d-flex align-items-start">
+                <span class="fs-3 me-3">📅</span>
+                <div>
+                  <h6 class="text-muted mb-1">Date & Time</h6>
+                  <p class="mb-0 fw-semibold" style="color: var(--market-accent);">
+                    <%= @event.event_date.strftime("%A, %B %d, %Y") %><br>
+                    <span class="text-muted"><%= @event.event_date.strftime("%I:%M %p") %></span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            
+            <% if @event.location %>
+              <div class="col-md-6">
+                <div class="d-flex align-items-start">
+                  <span class="fs-3 me-3">📍</span>
+                  <div>
+                    <h6 class="text-muted mb-1">Location</h6>
+                    <p class="mb-0 fw-semibold" style="color: var(--market-accent);">
+                      <%= @event.location %>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+          
+          <!-- Event Status Badge -->
+          <div class="mb-4">
+            <% if @event.upcoming? %>
+              <span class="badge bg-success px-4 py-2" style="font-size: 1rem;">
+                ✨ Upcoming Event
+              </span>
+            <% elsif @event.past? %>
+              <span class="badge bg-secondary px-4 py-2" style="font-size: 1rem;">
+                📚 Past Event
+              </span>
+            <% end %>
+          </div>
+          
+          <!-- Event Description -->
+          <div class="event-description">
+            <h3 class="mb-3" style="color: var(--market-primary);">About This Event</h3>
+            <div class="lead" style="color: var(--market-accent); line-height: 1.8;">
+              <%= simple_format(@event.description) %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Sidebar -->
+    <div class="col-lg-4">
+      <!-- Quick Info Card -->
+      <div class="card border-0 shadow mb-4" style="background: linear-gradient(135deg, var(--market-warm), var(--market-light)); border: 2px solid var(--market-secondary) !important;">
+        <div class="card-body p-4">
+          <h4 class="mb-4" style="color: var(--market-primary);">
+            <span class="me-2">📌</span>Event Details
+          </h4>
+          
+          <!-- Countdown or Status -->
+          <% if @event.upcoming? %>
+            <div class="alert alert-info mb-3" style="background-color: rgba(60, 59, 110, 0.1); border: 2px solid var(--market-accent);">
+              <% days_until = (@event.event_date.to_date - Date.current).to_i %>
+              <% if days_until == 0 %>
+                <strong>🎉 Today!</strong>
+              <% elsif days_until == 1 %>
+                <strong>⏰ Tomorrow</strong>
+              <% else %>
+                <strong>⏳ In <%= days_until %> days</strong>
+              <% end %>
+            </div>
+          <% end %>
+          
+          <!-- Additional Info -->
+          <div class="mb-3">
+            <p class="mb-2">
+              <strong style="color: var(--market-primary);">When:</strong><br>
+              <span style="color: var(--market-accent);">
+                <%= @event.event_date.strftime("%B %d, %Y at %I:%M %p") %>
+              </span>
+            </p>
+          </div>
+          
+          <% if @event.location %>
+            <div class="mb-3">
+              <p class="mb-2">
+                <strong style="color: var(--market-primary);">Where:</strong><br>
+                <span style="color: var(--market-accent);"><%= @event.location %></span>
+              </p>
+            </div>
+          <% end %>
+          
+          <hr style="border-color: var(--market-secondary); opacity: 0.5;">
+          
+          <!-- Action Buttons -->
+          <div class="d-grid gap-2">
+            <% if @event.upcoming? %>
+              <%= link_to "📧 Get Reminders", new_subscription_path, class: "btn btn-primary btn-lg" %>
+              <%= link_to "📋 View All Events", events_path, class: "btn btn-outline-secondary" %>
+            <% else %>
+              <%= link_to "📋 View Upcoming Events", events_path, class: "btn btn-primary btn-lg" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Related Section -->
+      <div class="card border-0 shadow" style="border: 2px solid var(--market-secondary) !important;">
+        <div class="card-body p-4">
+          <h5 class="mb-3" style="color: var(--market-primary);">
+            <span class="me-2">🎯</span>More Information
+          </h5>
+          <ul class="list-unstyled">
+            <li class="mb-2">
+              <%= link_to "🍽️ View Our Menu", menu_items_path, class: "text-decoration-none", style: "color: var(--market-accent);" %>
+            </li>
+            <li class="mb-2">
+              <%= link_to "💰 Current Promotions", promos_path, class: "text-decoration-none", style: "color: var(--market-accent);" %>
+            </li>
+            <li class="mb-2">
+              <%= link_to "🏠 Back to Home", root_path, class: "text-decoration-none", style: "color: var(--market-accent);" %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .event-description {
+    font-size: 1.1rem;
+    margin-top: 2rem;
+  }
+  
+  .event-description p {
+    margin-bottom: 1.5rem;
+  }
+</style>

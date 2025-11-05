@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <rect width="400" height="300" fill="#F5DEB3"/>
+  <rect x="120" y="100" width="160" height="70" rx="10" fill="#8B4513"/>
+  <path d="M 120 110 Q 200 95 280 110" fill="#A0522D" opacity="0.7"/>
+  <ellipse cx="240" cy="140" rx="30" ry="25" fill="#F5DEB3"/>
+  <ellipse cx="160" cy="150" rx="35" ry="20" fill="#FFD700"/>
+  <text x="200" y="250" font-family="Georgia, serif" font-size="20" fill="#8B4513" text-anchor="middle" font-weight="bold">Meatloaf</text>
+</svg>

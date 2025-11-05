@@ -1,0 +1,55 @@
+<div class="container mt-4">
+  <div class="market-section">
+    <h2>🍔 Our Fresh Menu Items</h2>
+    
+    <div class="row">
+      <% if @menu_items.any? %>
+        <% @menu_items.each do |menu_item| %>
+          <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card h-100">
+              <% if menu_item.image_url.present? %>
+                <%= image_tag menu_item.image_url, class: "card-img-top", style: "height: 200px; object-fit: cover;" %>
+              <% elsif menu_item.image.attached? %>
+                <%= image_tag menu_item.image, class: "card-img-top", style: "height: 200px; object-fit: cover;" %>
+              <% else %>
+                <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                  <span class="text-muted">🥬 No Image</span>
+                </div>
+              <% end %>
+              
+              <div class="card-body d-flex flex-column">
+                <h5 class="card-title"><%= menu_item.name %></h5>
+                <p class="card-text flex-grow-1"><%= truncate(menu_item.description, length: 100) %></p>
+                
+                <div class="d-flex justify-content-between align-items-center mt-auto">
+                  <span class="h5 text-success mb-0">$<%= menu_item.price %></span>
+                  <%= link_to "View Details", menu_item_path(menu_item), class: "btn btn-primary btn-sm" %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <div class="col-12">
+          <div class="alert alert-info text-center">
+            <h4>🌱 Coming Soon!</h4>
+            <p>We're currently updating our menu with fresh, seasonal items. Check back soon!</p>
+            <%= link_to "Go Home", root_path, class: "btn btn-primary" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    
+    <!-- Enhanced Pagination -->
+    <% if @menu_items.respond_to?(:current_page) %>
+      <div class="pagination-container">
+        <div class="pagination-summary">
+          Showing <strong><%= @menu_items.offset_value + 1 %></strong> to 
+          <strong><%= [@menu_items.offset_value + @menu_items.limit_value, @menu_items.total_count].min %></strong> 
+          of <strong><%= @menu_items.total_count %></strong> delicious menu items
+        </div>
+        <%= paginate @menu_items %>
+      </div>
+    <% end %>
+  </div>
+</div>

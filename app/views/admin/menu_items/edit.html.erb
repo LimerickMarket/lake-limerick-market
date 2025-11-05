@@ -1,0 +1,9 @@
+<div class="container mt-4">
+  <h1>Edit Menu Item</h1>
+  
+  <%= render 'form', menu_item: @menu_item %>
+  
+  <div class="mt-3">
+    <%= link_to "← Back to Menu Items", admin_menu_items_path, class: "btn btn-secondary" %>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <rect width="400" height="300" fill="#E6F3FF"/>
+  <rect x="120" y="90" width="160" height="20" fill="#D2691E"/>
+  <rect x="120" y="110" width="160" height="40" fill="#FFE4B5"/>
+  <rect x="120" y="150" width="160" height="10" fill="#228B22"/>
+  <rect x="120" y="160" width="160" height="20" fill="#DAA520"/>
+  <path d="M 130 120 L 150 135 L 130 135 Z" fill="#8B4513" opacity="0.3"/>
+  <path d="M 170 125 L 190 140 L 170 140 Z" fill="#8B4513" opacity="0.3"/>
+  <text x="200" y="250" font-family="Georgia, serif" font-size="20" fill="#3C3B6E" text-anchor="middle" font-weight="bold">Fish Sandwich</text>
+</svg>

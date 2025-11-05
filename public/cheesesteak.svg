@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <rect width="400" height="300" fill="#FFFEF7"/>
+  <path d="M 100 100 L 300 100 L 310 180 L 90 180 Z" fill="#D2691E"/>
+  <rect x="110" y="110" width="180" height="30" fill="#8B4513"/>
+  <rect x="110" y="140" width="180" height="20" fill="#FFD700" opacity="0.8"/>
+  <path d="M 120 150 Q 140 145 160 150 Q 180 155 200 150" stroke="#FF6347" stroke-width="3" fill="none"/>
+  <text x="200" y="250" font-family="Georgia, serif" font-size="20" fill="#8B4513" text-anchor="middle" font-weight="bold">Philly Cheesesteak</text>
+</svg>

@@ -1,0 +1,72 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>📧 Newsletter Templates</h1>
+    <%= link_to "Create New Template", new_admin_newsletter_template_path, class: "btn btn-primary" %>
+  </div>
+
+  <% if @templates.any? %>
+    <div class="row">
+      <% @templates.each do |template| %>
+        <div class="col-md-6 mb-4">
+          <div class="card h-100">
+            <div class="card-header d-flex justify-content-between align-items-center">
+              <strong><%= template.name %></strong>
+              <% if template.active? %>
+                <span class="badge bg-success">Active</span>
+              <% else %>
+                <span class="badge bg-secondary">Inactive</span>
+              <% end %>
+            </div>
+            <div class="card-body">
+              <p class="mb-2">
+                <strong>Type:</strong> 
+                <span class="badge bg-info"><%= template.template_type_name %></span>
+              </p>
+              <p class="mb-2">
+                <strong>Cadence:</strong> <%= template.cadence_name %>
+              </p>
+              <p class="mb-2">
+                <strong>Subject:</strong> <%= template.subject %>
+              </p>
+              <p class="mb-2">
+                <strong>Last Sent:</strong> 
+                <% if template.last_sent_at %>
+                  <%= time_ago_in_words(template.last_sent_at) %> ago
+                <% else %>
+                  <span class="text-muted">Never</span>
+                <% end %>
+              </p>
+              <% if template.ready_to_send? %>
+                <p class="mb-0">
+                  <span class="badge bg-success">✓ Ready to Send</span>
+                </p>
+              <% end %>
+            </div>
+            <div class="card-footer">
+              <div class="d-flex gap-2 flex-wrap">
+                <%= link_to "Preview", preview_admin_newsletter_template_path(template), 
+                    class: "btn btn-sm btn-info", target: "_blank" %>
+                <%= link_to "Edit", edit_admin_newsletter_template_path(template), 
+                    class: "btn btn-sm btn-warning" %>
+                <%= button_to "Send Now", send_now_admin_newsletter_template_path(template), 
+                    method: :post,
+                    data: { confirm: "Send this newsletter to all subscribers now?" },
+                    class: "btn btn-sm btn-success" %>
+                <%= button_to "Delete", admin_newsletter_template_path(template), 
+                    method: :delete,
+                    data: { confirm: "Are you sure?" },
+                    class: "btn btn-sm btn-danger" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="alert alert-info">
+      <h4>No Newsletter Templates Yet</h4>
+      <p>Create your first newsletter template to start sending emails to subscribers!</p>
+      <%= link_to "Create Template", new_admin_newsletter_template_path, class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</div>

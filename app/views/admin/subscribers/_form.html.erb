@@ -1,0 +1,56 @@
+<%= form_with(model: [:admin, subscriber], local: true, class: "needs-validation") do |f| %>
+  <% if subscriber.errors.any? %>
+    <div class="alert alert-danger">
+      <h4><%= pluralize(subscriber.errors.count, "error") %> prohibited this subscriber from being saved:</h4>
+      <ul>
+        <% subscriber.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="card">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <%= f.label :first_name, class: "form-label" %>
+          <%= f.text_field :first_name, class: "form-control", required: true %>
+        </div>
+
+        <div class="col-md-6 mb-3">
+          <%= f.label :last_name, class: "form-label" %>
+          <%= f.text_field :last_name, class: "form-control", required: true %>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <%= f.label :email, class: "form-label" %>
+        <%= f.email_field :email, class: "form-control", required: true %>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label d-block">Subscription Preferences</label>
+        
+        <div class="form-check form-switch mb-2">
+          <%= f.check_box :weekly_deals, class: "form-check-input", id: "weekly-deals-switch" %>
+          <%= f.label :weekly_deals, "Weekly Deals & Specials", class: "form-check-label", for: "weekly-deals-switch" %>
+        </div>
+
+        <div class="form-check form-switch">
+          <%= f.check_box :event_notifications, class: "form-check-input", id: "event-notifications-switch" %>
+          <%= f.label :event_notifications, "Event Notifications", class: "form-check-label", for: "event-notifications-switch" %>
+        </div>
+      </div>
+
+      <div class="alert alert-warning">
+        <strong>⚠️ Note:</strong> Subscribers are typically managed through the public newsletter signup form. Only edit if necessary.
+      </div>
+
+      <div class="d-flex gap-2">
+        <%= f.submit "Update Subscriber", class: "btn btn-primary" %>
+        <%= link_to "Cancel", admin_subscribers_path, class: "btn btn-secondary" %>
+      </div>
+    </div>
+  </div>
+<% end %>

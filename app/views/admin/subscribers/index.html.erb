@@ -1,0 +1,76 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h1>📧 Manage Subscribers</h1>
+    <div>
+      <span class="badge bg-primary fs-5"><%= @subscribers.count %> Total Subscribers</span>
+    </div>
+  </div>
+
+  <% if @subscribers.any? %>
+    <div class="card mb-3">
+      <div class="card-body">
+        <div class="row text-center">
+          <div class="col-md-4">
+            <h4><%= @subscribers.where(weekly_deals: true).count %></h4>
+            <p class="text-muted">Weekly Deals Subscribers</p>
+          </div>
+          <div class="col-md-4">
+            <h4><%= @subscribers.where(event_notifications: true).count %></h4>
+            <p class="text-muted">Event Notification Subscribers</p>
+          </div>
+          <div class="col-md-4">
+            <h4><%= @subscribers.where('subscribed_at > ?', 30.days.ago).count %></h4>
+            <p class="text-muted">New in Last 30 Days</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table table-striped table-hover">
+        <thead class="table-dark">
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Subscribed Date</th>
+            <th>Preferences</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @subscribers.each do |subscriber| %>
+            <tr>
+              <td><strong><%= subscriber.full_name %></strong></td>
+              <td><%= subscriber.email %></td>
+              <td><%= subscriber.subscribed_at.strftime("%b %d, %Y") if subscriber.subscribed_at %></td>
+              <td>
+                <% if subscriber.weekly_deals %>
+                  <span class="badge bg-info me-1">Weekly Deals</span>
+                <% end %>
+                <% if subscriber.event_notifications %>
+                  <span class="badge bg-success">Events</span>
+                <% end %>
+                <% unless subscriber.weekly_deals || subscriber.event_notifications %>
+                  <span class="text-muted">None</span>
+                <% end %>
+              </td>
+              <td style="min-width: 140px;">
+                <div class="d-flex gap-2">
+                  <%= link_to "Edit", edit_admin_subscriber_path(subscriber), class: "btn btn-sm btn-warning" %>
+                  <%= button_to "Delete", admin_subscriber_path(subscriber), method: :delete, 
+                      data: { confirm: "Are you sure you want to delete this subscriber?" }, 
+                      class: "btn btn-sm btn-danger" %>
+                </div>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% else %>
+    <div class="alert alert-info">
+      <h4>No Subscribers Yet</h4>
+      <p>Subscribers will appear here when people sign up for your newsletter!</p>
+    </div>
+  <% end %>
+</div>

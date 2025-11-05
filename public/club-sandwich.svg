@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <rect width="400" height="300" fill="#F5DEB3"/>
+  <rect x="130" y="90" width="140" height="15" fill="#D2691E"/>
+  <rect x="130" y="105" width="140" height="8" fill="#F4A460"/>
+  <rect x="130" y="113" width="140" height="15" fill="#DAA520"/>
+  <rect x="130" y="128" width="140" height="8" fill="#228B22"/>
+  <rect x="130" y="136" width="140" height="15" fill="#D2691E"/>
+  <rect x="130" y="151" width="140" height="8" fill="#B22234"/>
+  <rect x="130" y="159" width="140" height="15" fill="#DAA520"/>
+  <path d="M 135 95 L 150 80 L 265 80 L 265 95" fill="none" stroke="#8B4513" stroke-width="2"/>
+  <text x="200" y="250" font-family="Georgia, serif" font-size="20" fill="#8B4513" text-anchor="middle" font-weight="bold">Club Sandwich</text>
+</svg>

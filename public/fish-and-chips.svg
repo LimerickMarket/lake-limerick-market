@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <rect width="400" height="300" fill="#E6F3FF"/>
+  <path d="M 120 110 L 200 110 L 190 150 L 110 150 Z" fill="#DAA520"/>
+  <path d="M 140 115 L 180 115 L 175 145 L 135 145 Z" fill="#F5DEB3"/>
+  <rect x="210" y="120" width="60" height="10" fill="#FFD700"/>
+  <rect x="215" y="135" width="50" height="10" fill="#FFD700"/>
+  <rect x="220" y="150" width="55" height="10" fill="#FFD700"/>
+  <rect x="210" y="165" width="60" height="10" fill="#FFD700"/>
+  <text x="200" y="250" font-family="Georgia, serif" font-size="20" fill="#3C3B6E" text-anchor="middle" font-weight="bold">Fish & Chips</text>
+</svg>

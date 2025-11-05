@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>3rd Generation Limerick Market</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container-fluid">
+        <%= link_to root_path, class: "navbar-brand d-flex align-items-center" do %>
+          <%= image_tag "/LimerickMarketLogo.png", alt: "Limerick Market Logo", style: "height: 60px; margin-right: 12px;" %>
+          <span>3rd Generation Limerick Market</span>
+        <% end %>
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <%= link_to "Home", root_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Menu Items", menu_items_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Events", events_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "Promos", promos_path, class: "nav-link" %>
+            </li>
+          </ul>
+          
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <%= link_to "Newsletter", new_subscription_path, class: "nav-link" %>
+            </li>
+            <% if admin_signed_in? %>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                  Admin
+                </a>
+                <ul class="dropdown-menu">
+                  <li><%= link_to "Manage Menu Items", admin_menu_items_path, class: "dropdown-item" %></li>
+                  <li><%= link_to "Manage Events", admin_events_path, class: "dropdown-item" %></li>
+                  <li><%= link_to "Manage Promos", admin_promos_path, class: "dropdown-item" %></li>
+                  <li><%= link_to "Newsletter Templates", admin_newsletter_templates_path, class: "dropdown-item" %></li>
+                  <li><%= link_to "Subscribers", admin_subscribers_path, class: "dropdown-item" %></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><%= button_to "Sign Out", destroy_admin_session_path, method: :delete, class: "dropdown-item", form: { style: "display: inline;" } %></li>
+                </ul>
+              </li>
+            <% else %>
+              <!-- Admin Login button hidden for public users -->
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Flash Messages -->
+    <div class="container mt-3">
+      <% if notice %>
+        <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <%= notice %>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      <% end %>
+      
+      <% if alert %>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <%= alert %>
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+      <% end %>
+    </div>
+
+    <!-- Main Content -->
+    <main>
+      <%= yield %>
+    </main>
+
+    <!-- Footer -->
+    <footer class="mt-5 py-4" style="background: linear-gradient(rgba(245, 222, 179, 0.9), rgba(245, 222, 179, 0.9)), url('/LakeLimerick.jpeg') center/cover; border-top: 3px solid var(--market-secondary);">
+      <div class="container text-center">
+        <p class="mb-2" style="color: var(--market-accent); font-weight: 600; font-size: 1.1rem;">
+          ⛳ 3rd Generation Limerick Market 🎣
+        </p>
+        <p class="mb-0" style="color: var(--market-accent);">
+          &copy; <%= Date.current.year %> Serving Lake Limerick & the Golf Course Community. Made with ❤️
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,63 @@
+<div class="container mt-4">
+  <div class="market-section">
+    <h2>🎪 Upcoming Events</h2>
+    
+    <div class="row">
+      <% if @events.any? %>
+        <% @events.each do |event| %>
+          <div class="col-lg-6 mb-4">
+            <div class="card h-100">
+              <% if event.image.attached? %>
+                <%= image_tag event.image, class: "card-img-top", style: "height: 200px; object-fit: cover;" %>
+              <% else %>
+                <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 200px;">
+                  <span class="text-muted fs-1">🎪</span>
+                </div>
+              <% end %>
+              
+              <div class="card-body d-flex flex-column">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                  <h5 class="card-title"><%= event.title %></h5>
+                  <span class="badge bg-primary"><%= event.event_date.strftime("%b %d") %></span>
+                </div>
+                
+                <p class="text-muted small mb-2">
+                  📅 <%= event.event_date.strftime("%A, %B %d, %Y") %>
+                  <% if event.event_date %>
+                    • ⏰ <%= event.event_date.strftime("%I:%M %p") %>
+                  <% end %>
+                </p>
+                
+                <% if event.location %>
+                  <p class="text-muted small mb-3">📍 <%= event.location %></p>
+                <% end %>
+                
+                <p class="card-text flex-grow-1"><%= truncate(event.description, length: 120) %></p>
+                
+                <div class="mt-auto">
+                  <%= link_to "Learn More", event_path(event), class: "btn btn-primary" %>
+                </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <div class="col-12">
+          <div class="alert alert-info text-center">
+            <h4>🗓️ No Upcoming Events</h4>
+            <p>We're planning some exciting events! Check back soon or subscribe to our newsletter for updates.</p>
+            <%= link_to "Subscribe to Newsletter", new_subscription_path, class: "btn btn-success me-2" %>
+            <%= link_to "Go Home", root_path, class: "btn btn-primary" %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    
+    <!-- Pagination -->
+    <% if @events.respond_to?(:current_page) %>
+      <div class="d-flex justify-content-center mt-4">
+        <%= paginate @events %>
+      </div>
+    <% end %>
+  </div>
+</div>

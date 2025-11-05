@@ -1,0 +1,61 @@
+<%= form_with(model: [:admin, promo], local: true, class: "needs-validation") do |f| %>
+  <% if promo.errors.any? %>
+    <div class="alert alert-danger">
+      <h4><%= pluralize(promo.errors.count, "error") %> prohibited this promo from being saved:</h4>
+      <ul>
+        <% promo.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="card">
+    <div class="card-body">
+      <div class="mb-3">
+        <%= f.label :title, class: "form-label" %>
+        <%= f.text_field :title, class: "form-control", 
+            placeholder: "e.g., Golfer's Appreciation Week", required: true %>
+      </div>
+
+      <div class="mb-3">
+        <%= f.label :description, class: "form-label" %>
+        <%= f.text_area :description, class: "form-control", rows: 5, 
+            placeholder: "Describe the promotional offer in detail...", 
+            required: true %>
+      </div>
+
+      <div class="row">
+        <div class="col-md-4 mb-3">
+          <%= f.label :discount_percentage, "Discount Percentage", class: "form-label" %>
+          <div class="input-group">
+            <%= f.number_field :discount_percentage, class: "form-control", 
+                step: 1, min: 0, max: 100, placeholder: "15" %>
+            <span class="input-group-text">%</span>
+          </div>
+          <small class="form-text text-muted">Optional: Leave blank if not applicable</small>
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <%= f.label :start_date, class: "form-label" %>
+          <%= f.date_field :start_date, class: "form-control", required: true %>
+        </div>
+
+        <div class="col-md-4 mb-3">
+          <%= f.label :end_date, class: "form-label" %>
+          <%= f.date_field :end_date, class: "form-control", required: true %>
+        </div>
+      </div>
+
+      <div class="alert alert-info">
+        <strong>💡 Tip:</strong> Make sure the end date is after the start date. Active promos will be displayed on the website.
+      </div>
+
+      <div class="d-flex gap-2">
+        <%= f.submit promo.new_record? ? "Create Promo" : "Update Promo", 
+            class: "btn btn-primary" %>
+        <%= link_to "Cancel", admin_promos_path, class: "btn btn-secondary" %>
+      </div>
+    </div>
+  </div>
+<% end %>

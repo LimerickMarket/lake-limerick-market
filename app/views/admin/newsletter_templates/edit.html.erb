@@ -1,0 +1,9 @@
+<div class="container mt-4">
+  <h1>Edit Newsletter Template</h1>
+  
+  <%= render 'form', template: @template %>
+  
+  <div class="mt-3">
+    <%= link_to "← Back to Templates", admin_newsletter_templates_path, class: "btn btn-secondary" %>
+  </div>
+</div>

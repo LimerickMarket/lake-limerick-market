@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= @template.subject %></title>
+  <style>
+    body {
+      font-family: Georgia, serif;
+      line-height: 1.6;
+      color: #333;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #FFFEF7;
+    }
+    .header {
+      background-color: #B22234;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      border-radius: 8px 8px 0 0;
+    }
+    .content {
+      background-color: white;
+      padding: 30px;
+      border: 2px solid #DAA520;
+      border-top: none;
+      border-radius: 0 0 8px 8px;
+    }
+    .footer {
+      text-align: center;
+      margin-top: 20px;
+      padding: 20px;
+      font-size: 0.9em;
+      color: #666;
+    }
+    a {
+      color: #B22234;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>🏪 3rd Generation Limerick Market</h1>
+  </div>
+  
+  <div class="content">
+    <%= simple_format(@template.body.gsub('{{subscriber_name}}', 'Valued Customer').html_safe) %>
+  </div>
+  
+  <div class="footer">
+    <p>🏪 3rd Generation Limerick Market<br>
+    Your lakeside diner & market at Lake Limerick Country Golf Course</p>
+    <p><small>You're receiving this because you subscribed to our newsletter.<br>
+    <a href="#">Unsubscribe</a> | <a href="#">Update Preferences</a></small></p>
+  </div>
+</body>
+</html>

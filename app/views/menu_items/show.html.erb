@@ -1,0 +1,88 @@
+<div class="container mt-4">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><%= link_to "Home", root_path %></li>
+      <li class="breadcrumb-item"><%= link_to "Menu Items", menu_items_path %></li>
+      <li class="breadcrumb-item active" aria-current="page"><%= @menu_item.name %></li>
+    </ol>
+  </nav>
+
+  <div class="row">
+    <div class="col-lg-6 mb-4">
+      <% if @menu_item.image_url.present? %>
+        <%= image_tag @menu_item.image_url, alt: @menu_item.name, class: "img-fluid rounded shadow" %>
+      <% elsif @menu_item.image.attached? %>
+        <%= image_tag @menu_item.image, alt: @menu_item.name, class: "img-fluid rounded shadow" %>
+      <% else %>
+        <div class="bg-light rounded shadow d-flex align-items-center justify-content-center" style="height: 400px;">
+          <span class="text-muted fs-1">🥬</span>
+        </div>
+      <% end %>
+    </div>
+    
+    <div class="col-lg-6">
+      <div class="market-section">
+        <h1><%= @menu_item.name %></h1>
+        
+        <div class="mb-4">
+          <span class="h2 text-success">$<%= @menu_item.price %></span>
+        </div>
+        
+        <div class="mb-4">
+          <h4>Description</h4>
+          <p class="lead"><%= simple_format(@menu_item.description) %></p>
+        </div>
+        
+        <div class="mb-4">
+          <h5>Category</h5>
+          <span class="badge bg-secondary fs-6"><%= @menu_item.category || "General" %></span>
+        </div>
+        
+        <% if @menu_item.available? %>
+          <div class="alert alert-success">
+            <strong>✅ Available!</strong> This item is currently in stock.
+          </div>
+        <% else %>
+          <div class="alert alert-warning">
+            <strong>⏳ Currently Unavailable</strong> Check back soon or ask about availability.
+          </div>
+        <% end %>
+        
+        <div class="d-flex gap-2">
+          <%= link_to "← Back to Menu", menu_items_path, class: "btn btn-outline-primary" %>
+          <%= link_to "Contact Us", contact_path, class: "btn btn-success" %>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Related Items Section -->
+  <div class="market-section">
+    <h3>You might also like</h3>
+    <div class="row">
+      <% MenuItem.where.not(id: @menu_item.id).limit(3).each do |item| %>
+        <div class="col-lg-4 mb-4">
+          <div class="card">
+            <% if item.image_url.present? %>
+              <%= image_tag item.image_url, class: "card-img-top", style: "height: 150px; object-fit: cover;" %>
+            <% elsif item.image.attached? %>
+              <%= image_tag item.image, class: "card-img-top", style: "height: 150px; object-fit: cover;" %>
+            <% else %>
+              <div class="card-img-top bg-light d-flex align-items-center justify-content-center" style="height: 150px;">
+                <span class="text-muted">🥬</span>
+              </div>
+            <% end %>
+            <div class="card-body">
+              <h6 class="card-title"><%= item.name %></h6>
+              <p class="card-text small"><%= truncate(item.description, length: 60) %></p>
+              <div class="d-flex justify-content-between align-items-center">
+                <span class="text-success">$<%= item.price %></span>
+                <%= link_to "View", menu_item_path(item), class: "btn btn-sm btn-outline-primary" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,113 @@
+<!-- Hero Section with Background -->
+<section class="market-hero" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('/LakeLimerickMarket.jpg') center/cover; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">
+  <div class="container">
+    <h1 style="color: white !important; text-shadow: 3px 3px 6px rgba(0,0,0,0.9);">⛳ Welcome to 3rd Generation Limerick Market 🎣</h1>
+    <p class="lead" style="color: white !important; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">Your lakeside diner & market at Lake Limerick Country Golf Course</p>
+    <p class="mb-4" style="font-size: 1.1rem; color: white !important; text-shadow: 2px 2px 4px rgba(0,0,0,0.8);">
+      Fuel up before your round • Grab lunch between holes • Celebrate after fishing
+    </p>
+    <%= link_to "View Our Menu", menu_items_path, class: "btn btn-primary btn-lg me-3" %>
+    <%= link_to "Subscribe to Newsletter", new_subscription_path, class: "btn btn-success btn-lg" %>
+  </div>
+</section>
+
+<div class="container">
+  <!-- Featured Sections -->
+  <div class="row mt-5">
+    <div class="col-lg-4 mb-4">
+      <div class="card h-100">
+        <div class="card-body text-center">
+          <h3 class="card-title">⛳ Golfer's Favorites</h3>
+          <p class="card-text">Hearty breakfast burritos, fresh burgers, and quick bites perfect before or after your round at Lake Limerick Golf Course!</p>
+          <%= link_to "See Menu Items", menu_items_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-lg-4 mb-4">
+      <div class="card h-100">
+        <div class="card-body text-center">
+          <h3 class="card-title">� Lakeside Living</h3>
+          <p class="card-text">Serving the Lake Limerick community with home-cooked meals, fishing supplies, and local goods for three generations.</p>
+          <%= link_to "View Events", events_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-lg-4 mb-4">
+      <div class="card h-100">
+        <div class="card-body text-center">
+          <h3 class="card-title">🍔 Daily Specials</h3>
+          <p class="card-text">Golfer's breakfast deals, fish fry Fridays, and weekend specials. Great food at great prices!</p>
+          <%= link_to "View Promos", promos_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  </div>  <!-- Newsletter Signup Section -->
+  <section class="market-section">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <div class="card">
+          <div class="card-header text-center">
+            <h2 class="mb-0">📧 Stay Connected</h2>
+          </div>
+          <div class="card-body text-center">
+            <p>Get the latest updates on fresh arrivals, special events, and exclusive deals delivered to your inbox!</p>
+            <%= link_to "Subscribe to Newsletter", new_subscription_path, class: "btn btn-success btn-lg" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Our Location Section -->
+  <section class="market-section">
+    <h2 class="text-center mb-5" style="color: var(--market-primary);">🏞️ Our Beautiful Location</h2>
+    <div class="row g-4 mb-5">
+      <div class="col-md-6">
+        <div class="card h-100 border-0 shadow-lg">
+          <%= image_tag "/LakeLimerick.jpeg", class: "card-img-top", style: "height: 300px; object-fit: cover;" %>
+          <div class="card-body text-center">
+            <h4 style="color: var(--market-primary);">🎣 Lake Limerick</h4>
+            <p class="text-muted">Nestled on the shores of beautiful Lake Limerick, our market has been serving anglers, boaters, and lake residents for three generations.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card h-100 border-0 shadow-lg">
+          <%= image_tag "/LakeLimerickGolf.jpg", class: "card-img-top", style: "height: 300px; object-fit: cover;" %>
+          <div class="card-body text-center">
+            <h4 style="color: var(--market-primary);">⛳ Lake Limerick Country Golf Course</h4>
+            <p class="text-muted">Located right at the golf course, we're the perfect stop before your tee time or after the 18th hole. Grab a quick bite and get back to the greens!</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Stats or Info -->
+  <section class="market-section">
+    <div class="row text-center">
+      <div class="col-md-3 mb-3">
+        <h3 class="text-primary">🏪</h3>
+        <h4>3rd Generation</h4>
+        <p>Family-owned since day one</p>
+      </div>
+      <div class="col-md-3 mb-3">
+        <h3 class="text-success">⛳</h3>
+        <h4>Golfer's Choice</h4>
+        <p>Right at the golf course</p>
+      </div>
+      <div class="col-md-3 mb-3">
+        <h3 class="text-warning">🎣</h3>
+        <h4>Lakeside Dining</h4>
+        <p>Serving anglers & boaters</p>
+      </div>
+      <div class="col-md-3 mb-3">
+        <h3 class="text-info">🍔</h3>
+        <h4>Fresh Kitchen</h4>
+        <p>Made to order daily</p>
+      </div>
+    </div>
+  </section>
+</div>
