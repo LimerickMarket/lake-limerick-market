@@ -12,8 +12,8 @@ class NewsletterMailer < ApplicationMailer
       to: subscriber.email,
       subject: template.subject
     ) do |format|
-      format.html { render html: template.body_html.html_safe }
-      format.text { render plain: template.body_text }
+      format.html { render html: template.body.html_safe }
+      format.text { render plain: template.body }
     end
   end
 end
