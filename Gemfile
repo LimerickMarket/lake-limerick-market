@@ -69,8 +69,6 @@ gem "devise", "~> 4.9"
 gem "kaminari", "~> 1.2"
 gem "bootstrap5-kaminari-views", "~> 0.0.1"
 
-gem "bootstrap", "~> 5.3"
-
 # Security
 gem "rack-attack", "~> 6.7"
 
